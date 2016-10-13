@@ -1,0 +1,24 @@
+h3
+  | 番組詳細 - #{@program.title}
+
+section
+
+  h4 放送局
+  p
+    = @program.channel_service.name
+    br
+    | 物理チャンネル
+    =< @program.channel_service.channel.channel
+    br
+    | 開始時間
+    =< @program.start_at.to_s
+    br
+    | 終了時間
+    =< @program.end_at.to_s
+
+  h4 番組説明
+  p
+    = @program.detail
+  h4 番組説明（詳細）
+  p
+    = simple_format(@program.ext_detail)

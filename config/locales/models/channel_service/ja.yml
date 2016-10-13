@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      channel_service: 'チャンネル編成'
+    attributes:
+      channel_service:
+        id: 'ID'
+        service_id: 'サービスID'
+        name: 'チャンネル名'

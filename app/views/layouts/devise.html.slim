@@ -1,0 +1,27 @@
+doctype html
+html lang=I18n.locale
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    meta name="description" content=""
+    meta name="author" content=""
+
+    link rel="shortcut icon" href=image_path("favicon.png") type="image/png"
+
+    title Cocona
+
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body.signin
+    section
+      .signinpanel
+        - if notice.present?
+          .alert.alert-success
+            = notice
+        - if alert.present?
+          .alert.alert-danger
+            = alert
+
+        == yield

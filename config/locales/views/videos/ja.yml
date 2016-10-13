@@ -1,0 +1,9 @@
+ja:
+  videos:
+    index:
+      label:
+        title: '番組名'
+        detail: '番組内容'
+      placeholder:
+        title: '番組名'
+        detail: '番組内容'

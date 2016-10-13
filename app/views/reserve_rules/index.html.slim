@@ -1,0 +1,71 @@
+- content_for(:page_icon)
+  = 'fa-tasks'
+
+- content_for(:page_title)
+  = t('.page_title')
+
+
+.row
+  .col-sm-3.col-lg-2.mb20
+    a.btn.btn-primary.btn-block href=new_reserve_rule_path
+      = t('.label.new')
+    a.btn.btn-info.btn-block href=reservation_update_reserve_rules_path data={method: :post}
+      = t('.label.reservation_update')
+
+  .col-sm-9.col-lg-10
+    .panel.panel-default
+      .panel-body
+        .paginate.pull-right
+          = paginate @reserve_rules
+
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th
+                  = sort_link(@search, :id)
+                th
+                  = sort_link(@search, :status)
+                th
+                  = t('.label.condition')
+                th
+                  = sort_link(@search, :created_at)
+                th
+            tbody
+              - @reserve_rules.each do |reserve_rule|
+                tr
+                  td
+                    = reserve_rule.id
+                  td
+                    div.toggle.toggle-primary data={"href": switch_status_reserve_rule_path(reserve_rule.id), "toggle-on": (reserve_rule.status == 'active' ? 'true' : 'false')}
+                  td
+                    - conditions = reserve_rule.condition_obj
+                    - conditions.each_with_index do |cond, index|
+                      span.label.label-success
+                        - if cond[:attr] == "channel_service_id"
+                          - value = channel_service_name_get_by_id(cond[:value])
+                        - elsif cond[:attr] == "sub_categories_main_category_id"
+                          - value = main_category_name_get_by_id(cond[:value])
+                        - else
+                          - value = cond[:value]
+                        = t(".rule_condition.#{cond[:attr]}_#{cond[:cond]}", value: value)
+                      - unless index == conditions.size - 1
+                        span.label.label-default<>
+                          | AND
+                  td
+                    = reserve_rule.created_at.to_s(:datetime)
+                  td.table-action
+                    a href=edit_reserve_rule_path(reserve_rule)
+                      i.fa.fa-edit
+                        span<
+                          = t('.label.edit')
+                    a href=reserve_rule_path(reserve_rule) data={method: :delete, confirm: t('.alert.delete_confirm')}
+                      i.fa.fa-trash-o
+                        span<
+                          = t('.label.delete')
+
+        .paginate.pull-right
+          = paginate @reserve_rules
+
+javascript:
+  reserveRulesIndexFunc();

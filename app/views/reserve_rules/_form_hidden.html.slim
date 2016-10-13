@@ -1,0 +1,96 @@
+#filter_template_title style="display: none;"
+  .panel.panel-primary
+    .panel-heading
+      .panel-btns
+        a.panel-close &#215;
+      h3.panel-title
+        | 番組名
+    .panel-body
+      input type="hidden" name="filters[][attr]" value="title"
+      .form-group
+        .col-sm-3.control-label
+          | 番組名
+        .col-sm-6
+          input type="text" name="filters[][value]" class="form-control"
+      .form-group
+        .col-sm-3.control-label
+          | 条件
+        .col-sm-6
+          select.form-control.input-sm name="filters[][cond]"
+            option value="cont" 含む
+            option value="not_cont" 含まない
+            option value="eq" 完全一致
+            option value="start" 始まる
+            option value="end" 終わる
+
+
+#filter_template_detail style="display: none;"
+  .panel.panel-primary
+    .panel-heading
+      .panel-btns
+        a.panel-close &#215;
+      h3.panel-title
+        | 番組説明
+    .panel-body
+      input type="hidden" name="filters[][attr]" value="detail"
+      .form-group
+        .col-sm-3.control-label
+          | 番組説明
+        .col-sm-6
+          input type="text" name="filters[][value]" class="form-control"
+      .form-group
+        .col-sm-3.control-label
+          | 条件
+        .col-sm-6
+          select.form-control.input-sm name="filters[][cond]"
+            option value="cont" 含む
+            option value="not_cont" 含まない
+            option value="eq" 完全一致
+            option value="start" 始まる
+            option value="end" 終わる
+
+
+#filter_template_channel_service_id style="display: none;"
+  .panel.panel-primary
+    .panel-heading
+      .panel-btns
+        a.panel-close &#215;
+      h3.panel-title
+        | チャンネル
+    .panel-body
+      input type="hidden" name="filters[][attr]" value="channel_service_id"
+      .form-group
+        .col-sm-3.control-label
+          | チャンネル
+        .col-sm-6
+          = select_tag "filters[][value]", options_from_collection_for_select(ChannelService.order('channel_id', 'service_id'), :id, :name_with_service_id), class: 'form-control input-sm'
+      .form-group
+        .col-sm-3.control-label
+          | 条件
+        .col-sm-6
+          select.form-control.input-sm name="filters[][cond]"
+            option value="eq" 完全一致
+            option value="not_eq" 一致しない
+
+
+#filter_template_sub_categories_main_category_id style="display: none;"
+  .panel.panel-primary
+    .panel-heading
+      .panel-btns
+        a.panel-close &#215;
+      h3.panel-title
+        | カテゴリー
+    .panel-body
+      input type="hidden" name="filters[][attr]" value="sub_categories_main_category_id"
+      .form-group
+        .col-sm-3.control-label
+          | カテゴリー
+        .col-sm-6
+          = select_tag "filters[][value]", options_from_collection_for_select(MainCategory.all, :id, :name), class: 'form-control input-sm'
+      .form-group
+        .col-sm-3.control-label
+          | 条件
+        .col-sm-6
+          select.form-control.input-sm name="filters[][cond]"
+            option value="eq" 完全一致
+            option value="not_eq" 一致しない

@@ -1,0 +1,18 @@
+.panel-body
+  input#redraw_json type="hidden" value=@redraw_json
+  - if f.object.errors.include?(:condition)
+    .has-error
+      span.help-block
+        = f.full_error :condition
+  #filter_container
+
+  .form-group
+    .col-sm-3.col-sm-offset-7
+      select#filter_select.form-control.input-sm
+        option value="title" 番組名
+        option value="detail" 番組説明
+        option value="channel_service_id" チャンネル
+        option value="sub_categories_main_category_id" カテゴリー
+    .col-sm-2
+      button#add_filter_button.btn.btn-primary
+        | フィルタを追加

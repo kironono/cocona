@@ -1,0 +1,81 @@
+- content_for(:page_icon)
+  = 'fa-clock-o'
+
+- content_for(:page_title)
+  = '予約'
+
+
+.row
+  .col-sm-3.col-lg-2.mb20
+
+    ul.nav.nav-pills.nav-stacked
+      li class=('active' if @status == :reserved)
+        a href=status_reservations_path(:reserved)
+          span.badge.pull-right
+            = @search.result.where(status: :reserved).count
+          | 予約済み
+      li class=('active' if @status == :standby)
+        a href=status_reservations_path(:standby)
+          span.badge.pull-right
+            = @search.result.where(status: :standby).count
+          | 録画待機中
+      li class=('active' if @status == :recording)
+        a href=status_reservations_path(:recording)
+          span.badge.pull-right
+            = @search.result.where(status: :recording).count
+          | 録画中
+      li class=('active' if @status == :recorded)
+        a href=status_reservations_path(:recorded)
+          span.badge.pull-right
+            = @search.result.where(status: :recorded).count
+          | 録画終了
+
+  .col-sm-9.col-lg-10
+    .panel.panel-default
+      .panel-body
+        .paginate.pull-right
+          = paginate @reservations
+
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th
+                  = sort_link(@search, :program_channel_service_name, ChannelService.human_attribute_name(:name))
+                th
+                  = MainCategory.human_attribute_name(:name)
+                th
+                  = sort_link(@search, :program_title)
+                th
+                  = sort_link(@search, :program_start_at)
+                th
+                  = sort_link(@search, :program_end_at)
+                th
+                  = sort_link(@search, :program_duration)
+
+            tbody
+              - @reservations.each do |reservation|
+                tr
+                  - program = reservation.program
+                  td
+                    = program.channel_service.name_with_service_id
+                  td
+                    - program.main_categories.each do |main_category|
+                      span.label.label-default
+                        = main_category.name
+                  td
+                    = link_to(program.title, program_path(program))
+                  td
+                    = program.start_at.to_s(:datetime)
+                  td
+                    = program.end_at.to_s(:datetime)
+                  td
+                    = distance_of_time_in_words program.duration
+                  td.table-action
+                    a href=reservation_path(reservation) data={method: :delete, confirm: 'Are you sure?'}
+                      i.fa.fa-film
+                      span<
+                        | 削除
+
+        .paginate.pull-right
+          = paginate @reservations

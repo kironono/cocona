@@ -1,0 +1,45 @@
+defaults: &defaults
+  web:
+    default_url_options:
+      host: 'localhost'
+  worker:
+    polling_interval: 1
+  recorder:
+    command: '/usr/local/bin/recpt1 --b25 --strip --sid {{sid}} {{channel}} - -'
+    polling_interval: 1
+  epg_update:
+    command: '/usr/local/bin/epgdump'
+    duration: 30
+  schedule:
+    reservation_update:
+      cron: '*/30 * * * *'
+      queue: 'general'
+      class: 'ReservationUpdateJob'
+    epg_update:
+      cron: '0 */2 * * *'
+      queue: 'recorder'
+      class: 'EpgUpdateJob'
+    recording_kick:
+      cron: '* * * * *'
+      queue: 'general'
+      class: 'RecordingKickJob'
+  directory:
+    recorded: '<%= Rails.root %>/data/recorded'
+    temporary: '<%= Rails.root %>/data/temporary'
+  web_push:
+    push7_appno: ''
+    push7_apikey: ''
+  twitter:
+    consumer_key: ''
+    consumer_secret: ''
+    access_token: ''
+    access_token_secret: ''
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

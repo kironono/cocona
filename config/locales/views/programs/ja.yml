@@ -1,0 +1,13 @@
+ja:
+  programs:
+    index:
+      label:
+        channel_service: 'チャンネル名'
+        category: 'カテゴリー'
+        title: '番組名'
+        detail: '番組内容'
+      placeholder:
+        title: '番組名'
+        detail: '番組内容'
+      text:
+        blank: '選択してください'

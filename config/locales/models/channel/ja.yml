@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      channel: 'チャンネル'
+    attributes:
+      channel:
+        id: 'ID'
+        name: '名前'
+        channel: 'チャンネル'

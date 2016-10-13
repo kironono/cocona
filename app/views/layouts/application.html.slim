@@ -1,0 +1,131 @@
+doctype html
+html lang=I18n.locale
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    meta name="description" content=""
+    meta name="author" content=""
+
+    link rel="shortcut icon" href=image_path("favicon.png") type="image/png"
+
+    title
+      = content_for?(:page_title) ? "#{yield(:page_title)} | cocona" : 'cocona'
+
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  body
+
+    section
+      .leftpanel
+        .logopanel
+          h1
+            span>
+              | [
+            | cocona
+            span<
+              | ]
+
+        .leftpanelinner
+          h5.sidebartitle
+            | Navigation
+          ul.nav.nav-pills.nav-stacked.nav-bracket
+            li class=('active' if is_active_link?(root_path, :exact))
+              a href=root_path
+                i.fa.fa-dashboard
+                span
+                  | ダッシュボード
+            li class=('active' if is_active_link?(programs_path))
+              a href=programs_path
+                i.fa.fa-search
+                span
+                  | 番組検索
+            li class=('active' if is_active_link?(reserve_rules_path))
+              a href=reserve_rules_path
+                i.fa.fa-tasks
+                span
+                  | 予約ルール
+            li class=('active' if is_active_link?(reservations_path))
+              a href=reservations_path
+                i.fa.fa-clock-o
+                span
+                  | 予約
+            li class=('active' if is_active_link?(videos_path))
+              a href=videos_path
+                i.fa.fa-film
+                span
+                  | ビデオ
+          h5.sidebartitle
+            | Settings
+          ul.nav.nav-pills.nav-stacked.nav-bracket
+            li class=('active' if is_active_link?(settings_channels_path))
+              a href=settings_channels_path
+                i.fa.fa-signal
+                span
+                  | チャンネル設定
+            li class=('active' if is_active_link?(settings_users_path))
+              a href=settings_users_path
+                i.fa.fa-users
+                span
+                  | ユーザー設定
+            li.nav-parent
+              a href=""
+                i.fa.fa-cubes
+                span
+                  | その他
+              ul.children
+                /li class=('active' if is_active_link?(settings_system_infos_path))
+                /  a href=settings_system_infos_path
+                /    i.fa.fa-caret-right
+                /    | システム情報
+                li
+                  a href="/resque" target="_blank"
+                    i.fa.fa-caret-right
+                    | Resqueコンソール
+
+      .mainpanel
+        .headerbar
+
+          a.menutoggle
+            i.fa.fa-bars
+
+          .header-right
+            ul.headermenu
+              li.btn-group.visible-sm.visible-md.visible-lg
+                button.btn.btn-default.tp-icon title="server time"
+                  i.fa.fa-clock-o
+                  span.current_server_time<
+              li.btn-group
+                button.btn.btn-default.dropdown-toggle.tp-icon data={toggle: 'dropdown'}
+                  img> src=current_user.avatar_url alt=current_user.name
+                  = current_user.name
+                  span.caret
+                ul.dropdown-menu.dropdown-menu-usermenu.pull-right
+                  li
+                    a href=edit_settings_user_path(current_user)
+                      i.fa.fa-user
+                      span
+                        | アカウント設定
+                  li
+                    a href=destroy_user_session_path data={method: :delete}
+                      i.fa.fa-sign-out
+                      span
+                        | サインアウト
+
+        .pageheader
+          h2
+            - if content_for?(:page_icon)
+              i.fa class=(yield(:page_icon) if content_for(:page_icon))
+            =< content_for?(:page_title) ? yield(:page_title) : ''
+
+        .contentpanel
+          - flash.each do |key, value|
+            .alert class=flash_css_class(key)
+              button.close type="button" data={dismiss: :alert} aria-hidden="true"
+                | &#215;
+              = value
+
+          == yield
+
+      .rightpanel

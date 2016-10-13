@@ -1,0 +1,7 @@
+- content_for(:page_icon)
+  = 'fa-play'
+
+- content_for(:page_title)
+  = @video.title
+
+= videojs_rails sources: { mp4: "/players/#{@video.id}/play" }, width:"400", preload: 'none'

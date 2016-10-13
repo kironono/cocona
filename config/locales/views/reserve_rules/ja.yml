@@ -1,0 +1,42 @@
+ja:
+  reserve_rules:
+    index:
+      page_title: '予約ルール'
+      label:
+        new: '新規登録'
+        condition: '予約ルール'
+        edit: '編集'
+        delete: '削除'
+        reservation_update: '予約を今すぐ更新'
+      alert:
+        delete_confirm: '予約ルールを削除しますか'
+      rule_condition:
+        title_cont: '番組名に「%{value}」を含む'
+        title_not_cont: '番組名に「%{value}」を含まない'
+        title_eq: '番組名が「%{value}」と完全一致する'
+        title_start: '番組名が「%{value}」から始まる'
+        title_end: '番組名が「%{value}」で終わる'
+        detail_cont: '番組説明に「%{value}」を含む'
+        detail_not_cont: '番組説明に「%{value}」を含まない'
+        detail_eq: '番組説明が「%{value}」と完全一致する'
+        detail_start: '番組説明が「%{value}」から始まる'
+        detail_end: '番組説明が「%{value}」で終わる'
+        channel_service_id_eq: 'チャンネルが「%{value}」と一致する'
+        channel_service_id_not_eq: 'チャンネルが「%{value}」と一致しない'
+        sub_categories_main_category_id_eq: 'カテゴリーが「%{value}」と一致する'
+        sub_categories_main_category_id_not_eq: 'カテゴリーが「%{value}」と一致しない'
+    new:
+      page_title: '予約ルール'
+      label:
+        new: '新規登録'
+      btn:
+        registration: '登録'
+        cancel: 'キャンセル'
+    edit:
+      page_title: '予約ルール'
+      label:
+        edit: '編集'
+      btn:
+        update: '更新'
+        cancel: 'キャンセル'
+

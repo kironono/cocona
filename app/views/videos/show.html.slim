@@ -1,0 +1,10 @@
+- content_for(:page_icon)
+  = 'fa-film'
+
+- content_for(:page_title)
+  = 'ビデオ'
+
+.row
+  a href=show_player_path(@video.id)
+    span<
+      | 再生

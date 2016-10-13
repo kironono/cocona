@@ -1,0 +1,28 @@
+- content_for(:page_icon)
+  = 'fa-tasks'
+
+- content_for(:page_title)
+  = t('.page_title')
+
+.panel.panel-default
+  = simple_form_for(@reserve_rule, url: reserve_rules_path, html: {class: 'form-horizontal'}) do |f|
+    .panel-heading
+      h4.panel-title
+        = t('.label.new')
+
+    = render partial: 'form', locals: {f: f}
+
+    .panel-footer
+      .row
+        .col-sm-6.col-sm-offset-3
+          .btn-toolbar
+            button.btn.btn-primary type="submit"
+              = t('.btn.registration')
+            a.btn.btn-default href=reserve_rules_path
+              = t('.btn.cancel')
+
+= render partial: 'form_hidden'
+
+
+javascript:
+  reserveRulesFormFunc();

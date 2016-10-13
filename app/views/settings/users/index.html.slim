@@ -1,0 +1,50 @@
+- content_for(:page_icon)
+  = 'fa-users'
+
+- content_for(:page_title)
+  = 'ユーザー設定'
+
+.row
+  .col-sm-3.col-lg-2.mb20
+    a.btn.btn-primary.btn-block href=new_settings_user_path
+      | 新規登録
+
+  .col-sm-9.col-lg-10
+    .panel.panel-default
+      .panel-body
+        .paginate.pull-right
+          = paginate @users
+
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th
+                  = sort_link(@search, :id)
+                th
+                  = sort_link(@search, :name)
+                th
+                  = sort_link(@search, :email)
+                th
+            tbody
+              - @users.each do |user|
+                tr
+                  td
+                    = user.id
+                  td
+                    = user.name
+                  td
+                    = user.email
+                  td.table-action
+                    a href=edit_settings_user_path(user)
+                      i.fa.fa-edit
+                      span<
+                        | 編集
+                    - if current_user.id != user.id
+                      a href=settings_user_path(user) data={method: :delete, confirm: 'Are you sure?'}
+                        i.fa.fa-trash-o
+                        span<
+                          | 削除
+
+        .paginate.pull-right
+          = paginate @users

@@ -1,0 +1,16 @@
+ja:
+  reserve_rules:
+    create:
+      flash:
+        success: '予約ルール #%{id}を作成しました'
+        error: '作成に失敗しました'
+    update:
+      flash:
+        success: '予約ルール #%{id}を更新しました'
+        error: '更新に失敗しました'
+    destroy:
+      flash:
+        success: '予約ルール #%{id}を削除しました'
+    reservation_update:
+      flash:
+        success: '予約の更新をスケジュールしました'

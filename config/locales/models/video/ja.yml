@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      video: '番組'
+    attributes:
+      video:
+        id: 'ID'
+        event_id: 'イベントID'
+        title: '番組名'
+        detail: '番組内容'
+        ext_detail: '番組詳細'
+        start_at: '放送日時'
+        end_at: '終了日時'
+        duration: '長さ'

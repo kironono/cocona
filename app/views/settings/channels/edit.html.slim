@@ -1,0 +1,24 @@
+- content_for(:page_icon)
+  = 'fa-signal'
+
+- content_for(:page_title)
+  = 'チャンネル設定'
+
+.panel.panel-default
+  = simple_form_for(@channel, url: settings_channel_path, html: {class: 'form-horizontal'}) do |f|
+    .panel-heading
+      h4.panel-title
+        | チャンネル編集
+
+    .panel-body
+      = f.input :name
+      = f.input :channel
+
+    .panel-footer
+      .row
+        .col-sm-6.col-sm-offset-3
+          .btn-toolbar
+            button.btn.btn-primary type="submit"
+              | 更新
+            a.btn.btn-default href=settings_channels_path
+              | キャンセル

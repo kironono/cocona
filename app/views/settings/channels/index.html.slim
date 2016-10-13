@@ -1,0 +1,49 @@
+- content_for(:page_icon)
+  = 'fa-signal'
+
+- content_for(:page_title)
+  = 'チャンネル設定'
+
+.row
+  .col-sm-3.col-lg-2.mb20
+    a.btn.btn-primary.btn-block href=new_settings_channel_path
+      | 新規登録
+
+  .col-sm-9.col-lg-10
+    .panel.panel-default
+      .panel-body
+        .paginate.pull-right
+          = paginate @channels
+
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th
+                  = sort_link(@search, :id)
+                th
+                  = sort_link(@search, :name)
+                th
+                  = sort_link(@search, :channel)
+                th
+            tbody
+              - @channels.each do |channel|
+                tr
+                  td
+                    = channel.id
+                  td
+                    = channel.name
+                  td
+                    = channel.channel
+                  td.table-action
+                    a href=edit_settings_channel_path(channel)
+                      i.fa.fa-edit
+                      span<
+                        | 編集
+                    a href=settings_channel_path(channel) data={method: :delete, confirm: 'Are you sure?'}
+                      i.fa.fa-trash-o
+                      span<
+                        | 削除
+
+        .paginate.pull-right
+          = paginate @channels

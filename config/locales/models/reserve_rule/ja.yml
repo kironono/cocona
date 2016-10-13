@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      reserve_rule: '予約ルール'
+    attributes:
+      reserve_rule:
+        id: 'ID'
+        status: '状態'
+        condition: '予約ルール'
+        created_at: '作成日時'

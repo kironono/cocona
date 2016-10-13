@@ -1,0 +1,73 @@
+- content_for(:page_icon)
+  = 'fa-search'
+
+- content_for(:page_title)
+  = '番組検索'
+
+
+.row
+  .col-sm-3.col-lg-2.mb20
+    .panel.panel-default
+      = simple_form_for(@search, url: programs_path, method: :get, wrapper: :block_styled_form) do |f|
+        .panel-body
+          = f.input :channel_service_id_eq, as: :select, collection: channel_service_collection, include_blank: t('.text.blank'), label: t('.label.channel_service'), required: false
+          = f.input :sub_categories_main_category_id_eq, as: :select, collection: main_categories_collection, include_blank: t('.text.blank'), label: t('.label.category'), required: false
+          = f.input :title_cont, label: t('.label.title'), placeholder: t('.placeholder.title'), required: false
+          = f.input :detail_cont, label: t('.label.detail'), placeholder: t('.placeholder.detail'), required: false
+
+        .panel-footer
+          button.btn.btn-primary type="submit"
+            | 検索
+
+  .col-sm-9.col-lg-10
+    .panel.panel-default
+      .panel-body
+        .paginate.pull-right
+          = paginate @programs
+
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th
+                  = sort_link(@search, :channel_service_name, ChannelService.human_attribute_name(:name))
+                th
+                  = MainCategory.human_attribute_name(:name)
+                th
+                  = sort_link(@search, :title)
+                th
+                  = sort_link(@search, :start_at)
+                th
+                  = sort_link(@search, :end_at)
+                th
+                  = sort_link(@search, :duration)
+                th
+            tbody
+              - @programs.each do |program|
+                tr
+                  td
+                    = program.channel_service.name_with_service_id
+                  td
+                    - program.main_categories.each do |main_category|
+                      span.label.label-default
+                        = main_category.name
+                  td
+                    = link_to(program.title, program_path(program))
+                  td
+                    = program.start_at.to_s(:datetime)
+                  td
+                    = program.end_at.to_s(:datetime)
+                  td
+                    = distance_of_time_in_words program.duration
+                  td.table-action
+                    a.reserve_link href=reserve_program_path(program)
+                      i.fa.fa-film
+                      span<
+                        | 予約
+
+        .paginate.pull-right
+          = paginate @programs
+
+
+javascript:
+  programsIndexFunc();
