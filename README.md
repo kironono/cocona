@@ -1,6 +1,4 @@
-# Cocona
-
-[![CircleCI](https://circleci.com/gh/kironono/cocona/tree/master.svg?style=shield&circle-token=0dba2bf4e93f1c28c051340ac277c6d1f03bb29c)](https://circleci.com/gh/kironono/cocona/tree/master)
+# cocona
 
 Digital Video Recorder.
 
@@ -14,11 +12,6 @@ Digital Video Recorder.
 
 
 ## Installation
-
-Install distribution packages.
-
-```
-```
 
 Install Ruby gems.
 
