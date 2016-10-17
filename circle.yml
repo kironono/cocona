@@ -9,5 +9,4 @@ dependencies:
   post:
     - >
       mkdir -p config;
-      echo -e 'host: localhost\nport: 6379' > config/redis.yml;
       cp config/settings.yml.sample config/settings.yml;

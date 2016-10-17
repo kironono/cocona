@@ -23,6 +23,9 @@ defaults: &defaults
       cron: '* * * * *'
       queue: 'general'
       class: 'RecordingKickJob'
+  redis:
+    host: 'localhost'
+    port: 6379
   directory:
     recorded: '<%= Rails.root %>/data/recorded'
     temporary: '<%= Rails.root %>/data/temporary'
