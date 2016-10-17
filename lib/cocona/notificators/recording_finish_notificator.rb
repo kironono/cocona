@@ -33,7 +33,7 @@ module Cocona
 
       def notify_web_push
         message = {
-          title: "Cocona",
+          title: "cocona",
           body: "『#{@program.title}』を録画しました。",
           url: link_url,
         }
