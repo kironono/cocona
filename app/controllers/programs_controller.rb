@@ -6,7 +6,9 @@ class ProgramsController < ApplicationController
   def index
     @search = Program.where("end_at >= ?", Time.now).ransack(params[:q])
     @search.sorts = 'start_at asc' if @search.sorts.empty?
-    @programs = @search.result(distinct: true).page(params[:page]).per(params[:per])
+    @programs = @search.result(distinct: true) \
+      .includes(:channel_service).joins(:channel_service) \
+      .page(params[:page]).per(params[:per])
   end
 
   def show

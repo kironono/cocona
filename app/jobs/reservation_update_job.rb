@@ -9,7 +9,8 @@ class ReservationUpdateJob < ApplicationJob
 
   def reserve(reserve_rule)
     ActiveRecord::Base.transaction do
-      programs = Program.search({combinator: :and, groupings: reserve_rule.conditions}).result(distinct: true) \
+      programs = Program.search({combinator: :and, groupings: reserve_rule.conditions}) \
+        .result(distinct: true).includes(:channel_service).joins(:channel_service) \
         .where("start_at >= ?", Time.now).all
       programs.each do |program|
         reservation = Reservation.where(program_id: program.id).first

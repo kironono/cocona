@@ -6,7 +6,7 @@ class ReserveRulesController < ApplicationController
   def index
     @search = ReserveRule.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty?
-    @reserve_rules = @search.result(distinct: true).page(params[:page]).per(params[:per])
+    @reserve_rules = @search.result.page(params[:page]).per(params[:per])
   end
 
   def new
