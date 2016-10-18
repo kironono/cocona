@@ -26,7 +26,6 @@ bundle i --path=./.bundle --binstubs=./.bundle/bin
 
 * config/secrets.yml
 * config/database.yml
-* config/redis.yml
 * config/settings.yml
 
 ### Create Database
