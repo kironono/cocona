@@ -46,6 +46,12 @@ rails db:migrate
 rails db:seed
 ```
 
+### Create first user
+
+```
+thor user_ctrl:create --name=cocona --email=cocona@example.com --password=password
+```
+
 ## Run
 
 ```
