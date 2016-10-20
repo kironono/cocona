@@ -21,7 +21,7 @@ set :format, :airbrussh
 # set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
@@ -60,14 +60,46 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
 
-namespace :deploy do
+#namespace :deploy do
+#
+#  after :restart, :clear_cache do
+#    on roles(:web), in: :groups, limit: 3, wait: 10 do
+#      # Here we can do anything such as:
+#      # within release_path do
+#      #   execute :rake, 'cache:clear'
+#      # end
+#    end
+#  end
+#
+#end
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+namespace :supervisorctl do
+
+  desc 'supervisorctl start'
+  task :start do
+    on roles(:app) do
+      execute "sudo supervisorctl start all"
+    end
+  end
+
+  desc 'supervisorctl stop'
+  task :stop do
+    on roles(:app) do
+      execute "sudo supervisorctl stop all"
+    end
+  end
+
+  desc 'supervisorctl restart'
+  task :restart do
+    on roles(:app) do
+      execute "sudo supervisorctl restart all"
+    end
+  end
+
+  desc 'supervisorctl status'
+  task :status do
+    on roles(:app) do
+      execute "sudo supervisorctl status"
     end
   end
 
