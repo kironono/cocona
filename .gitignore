@@ -17,6 +17,7 @@
 .byebug_history
 
 # Settings
+/config/cable.yml
 /config/settings.yml
 
 # Ignore datafiles

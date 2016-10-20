@@ -28,6 +28,7 @@ set :format, :airbrussh
 set :linked_files, [
   'config/database.yml',
   'config/secrets.yml',
+  'config/cable.yml',
   'config/settings.yml',
 ]
 
