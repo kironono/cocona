@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: cocona_production
+  database: cocona
   username: cocona
   password: <%= ENV['COCONA_DATABASE_PASSWORD'] %>
