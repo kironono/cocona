@@ -40,6 +40,7 @@ set :linked_dirs, [
   'tmp/cache',
   'tmp/sockets',
   'public/system',
+  'data',
 ]
 
 # Default value for default_env is {}
