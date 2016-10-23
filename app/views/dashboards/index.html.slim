@@ -4,3 +4,111 @@
 - content_for(:page_title)
   = 'ダッシュボード'
 
+div class="row"
+
+  .col-sm-6.col-md-3
+    .panel.panel-info.panel-stat
+      .panel-heading
+
+        .stat
+          .row
+            .col-xs-4
+              i.fa.fa-fw.fa-tasks
+            .col-xs-8
+              small.stat-label
+                | 予約ルール
+              h1
+                = @reserve_rules_active_count + @reserve_rules_inactive_count
+
+          .mb15
+            |
+
+          .row
+            .col-xs-6
+              small.stat-label
+                | アクティブ
+              h4
+                = @reserve_rules_active_count
+            .col-xs-6
+              small.stat-label
+                | 非アクティブ
+              h4
+                = @reserve_rules_inactive_count
+
+  .col-sm-6.col-md-3
+    .panel.panel-primary.panel-stat
+      .panel-heading
+
+        .stat
+          .row
+            .col-xs-4
+              i.fa.fa-fw.fa-clock-o
+            .col-xs-8
+              small.stat-label
+                | 予約済
+              h1
+                = @reservations_count
+
+          .mb15
+            |
+
+          .row
+            .col-xs-12
+              small.stat-label
+                | 24時間以内に開始する予約
+              h4
+                = @recent_reservations_count
+
+  .col-sm-6.col-md-3
+    .panel.panel-danger.panel-stat
+      .panel-heading
+
+        .stat
+          .row
+            .col-xs-4
+              i.fa.fa-fw.fa-circle
+            .col-xs-8
+              small.stat-label
+                | 録画中
+              h1
+                = @recording_count + @standby_count
+
+          .mb15
+            |
+
+          .row
+            .col-xs-6
+              small.stat-label
+                | 録画中
+              h4
+                = @recording_count
+            .col-xs-6
+              small.stat-label
+                | 録画待機中
+              h4
+                = @standby_count
+
+  .col-sm-6.col-md-3
+    .panel.panel-success.panel-stat
+      .panel-heading
+
+        .stat
+          .row
+            .col-xs-4
+              i.fa.fa-fw.fa-film
+            .col-xs-8
+              small.stat-label
+                | 録画済み
+              h1
+                = @videos_count
+
+          .mb15
+            |
+
+          .row
+            .col-xs-12
+              small.stat-label
+                | 24時間以内の録画
+              h4
+                = @recent_videos_count
+
