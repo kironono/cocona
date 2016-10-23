@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
-  mount Resque::Server.new, :at => "/resque"
+
+  authenticate :user do
+    mount Resque::Server.new, :at => "/resque"
+  end
 
   devise_for :users
 
