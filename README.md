@@ -1,6 +1,6 @@
 # cocona
 
-Digital Video Recorder.
+Digital Video Recording solution for Linux.
 
 
 ## Requirements
