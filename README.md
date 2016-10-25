@@ -58,3 +58,7 @@ thor user_ctrl:create --name=cocona --email=cocona@example.com --password=passwo
 ```
 foreman start
 ```
+
+## License
+
+cocona is licensed under the [MIT license](LICENSE).
