@@ -1,0 +1,12 @@
+ja:
+  reservations:
+    index:
+      page_title: '予約'
+      label:
+        reserved: '予約済み'
+        standby: '録画待機中'
+        recording: '録画中'
+        recorded: '録画終了'
+        delete: '削除'
+      alert:
+        delete_confirm: '予約を削除しますか'

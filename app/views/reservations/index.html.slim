@@ -2,7 +2,7 @@
   = 'fa-clock-o'
 
 - content_for(:page_title)
-  = '予約'
+  = t('.page_title')
 
 
 .row
@@ -13,22 +13,22 @@
         a href=status_reservations_path(:reserved)
           span.badge.pull-right
             = @search.result.where(status: :reserved).count
-          | 予約済み
+          = t('.label.reserved')
       li class=('active' if @status == :standby)
         a href=status_reservations_path(:standby)
           span.badge.pull-right
             = @search.result.where(status: :standby).count
-          | 録画待機中
+          = t('.label.standby')
       li class=('active' if @status == :recording)
         a href=status_reservations_path(:recording)
           span.badge.pull-right
             = @search.result.where(status: :recording).count
-          | 録画中
+          = t('.label.recording')
       li class=('active' if @status == :recorded)
         a href=status_reservations_path(:recorded)
           span.badge.pull-right
             = @search.result.where(status: :recorded).count
-          | 録画終了
+          = t('.label.recorded')
 
   .col-sm-9.col-lg-10
     .panel.panel-default
@@ -73,10 +73,10 @@
                   td
                     = distance_of_time_in_words program.duration
                   td.table-action
-                    a href=reservation_path(reservation) data={method: :delete, confirm: 'Are you sure?'}
+                    a href=reservation_path(reservation) data={method: :delete, confirm: t('.alert.delete_confirm')}
                       i.fa.fa-film
                       span<
-                        | 削除
+                        = t('.label.delete')
 
         .paginate.pull-right
           = paginate @reservations
