@@ -1,9 +1,11 @@
 ja:
   videos:
     index:
+      page_title: 'ビデオ'
       label:
         title: '番組名'
         detail: '番組内容'
+        search: '検索'
       placeholder:
         title: '番組名'
         detail: '番組内容'
