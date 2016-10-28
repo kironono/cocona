@@ -2,13 +2,13 @@
   = 'fa-signal'
 
 - content_for(:page_title)
-  = 'チャンネル設定'
+  = t('.page_title')
 
 .panel.panel-default
   = simple_form_for(@channel, url: settings_channel_path, html: {class: 'form-horizontal'}) do |f|
     .panel-heading
       h4.panel-title
-        | チャンネル編集
+        = t('.label.edit')
 
     .panel-body
       = f.input :name
@@ -19,6 +19,6 @@
         .col-sm-6.col-sm-offset-3
           .btn-toolbar
             button.btn.btn-primary type="submit"
-              | 更新
+              = t('.btn.update')
             a.btn.btn-default href=settings_channels_path
-              | キャンセル
+              = t('.btn.cancel')

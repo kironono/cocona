@@ -1,0 +1,14 @@
+ja:
+  settings:
+    channels:
+      create:
+        flash:
+          success: 'チャンネル設定を登録しました'
+          error: 'チャンネル設定の登録に失敗しました'
+      update:
+        flash:
+          success: 'チャンネル設定を登録しました'
+          error: 'チャンネル設定の更新に失敗しました'
+      destroy:
+        flash:
+          success: 'チャンネル設定を削除しました'
