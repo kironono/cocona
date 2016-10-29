@@ -1,0 +1,14 @@
+ja:
+  settings:
+    users:
+      create:
+        flash:
+          success: 'ユーザーを登録しました'
+          error: 'ユーザーの登録に失敗しました'
+      update:
+        flash:
+          success: 'ユーザーを更新しました'
+          error: 'ユーザーの更新に失敗しました'
+      destroy:
+        flash:
+          success: 'ユーザーを削除しました'

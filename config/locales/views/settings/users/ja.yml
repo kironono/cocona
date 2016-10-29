@@ -1,0 +1,25 @@
+ja:
+  settings:
+    users:
+      index:
+        page_title: 'ユーザー設定'
+        label:
+          new: '新規登録'
+          edit: '編集'
+          delete: '削除'
+        alert:
+          delete_confirm: 'ユーザーを削除しますか'
+      new:
+        page_title: 'ユーザー設定'
+        label:
+          new: '新規登録'
+        btn:
+          registration: '登録'
+          cancel: 'キャンセル'
+      edit:
+        page_title: 'ユーザー設定'
+        label:
+          edit: 'ユーザー編集'
+        btn:
+          update: '更新'
+          cancel: 'キャンセル'

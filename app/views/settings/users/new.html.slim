@@ -2,13 +2,13 @@
   = 'fa-users'
 
 - content_for(:page_title)
-  = 'ユーザー設定'
+  = t('.page_title')
 
 .panel.panel-default
   = simple_form_for(@user, url: settings_users_path, html: {class: 'form-horizontal'}) do |f|
     .panel-heading
       h4.panel-title
-        | 新規登録
+        = t('.label.new')
 
     .panel-body
       = f.input :name, required: true
@@ -21,6 +21,6 @@
         .col-sm-6.col-sm-offset-3
           .btn-toolbar
             button.btn.btn-primary type="submit"
-              | 登録
+              = t('.btn.registration')
             a.btn.btn-default href=settings_users_path
-              | キャンセル
+              = t('.btn.cancel')
