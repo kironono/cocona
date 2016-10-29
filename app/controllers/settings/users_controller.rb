@@ -13,6 +13,7 @@ class Settings::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.locale = :ja
     if @user.save
       flash[:success] = t('.flash.success')
       redirect_to action: :index and return
