@@ -12,7 +12,7 @@ class RecordingJob < ApplicationJob
     program = reservation.program
 
     videodir = File.join(Settings.directory.recorded)
-    relative_videofile = "#{reservation.id}_#{program.event_id}_#{program.title}.m2ts"
+    relative_videofile = prepare_video_filename(reservation, program)
     videofile = File.join(videodir, relative_videofile)
     unless File.directory?(videodir)
       FileUtils.mkdir_p(videodir)
@@ -84,6 +84,22 @@ class RecordingJob < ApplicationJob
       reservation.status = :recorded
       reservation.save!
     end
+  end
+
+  private
+  def prepare_video_filename(reservation, program)
+    filename = Settings.video.filename_format
+    filename = filename \
+      .gsub(/{{reservation_id}}/, reservation.id.to_s) \
+      .gsub(/{{event_id}}/,       program.event_id) \
+      .gsub(/{{title}}/,          program.title) \
+      .gsub(/{{start_at}}/,       program.start_at.strftime("%Y%m%d%H%M")) \
+      .gsub(/{{end_at}}/,         program.end_at.strftime("%Y%m%d%H%M")) \
+      .gsub(/{{service_id}}/,     program.channel_service.service_id) \
+      .gsub(/{{service_name}}/,   program.channel_service.name) \
+      .gsub(/{{channel}}/,        program.channel.channel) \
+      .gsub(/{{channel_name}}/,   program.channel.name)
+    return filename
   end
 
 end

@@ -23,6 +23,8 @@ defaults: &defaults
       cron: '* * * * *'
       queue: 'general'
       class: 'RecordingKickJob'
+  video:
+    filename_format: '[{{channel_name}}-{{service_id}}][{{start_at}}-{{end_at}}] {{title}}.m2ts'
   redis:
     host: 'localhost'
     port: 6379
