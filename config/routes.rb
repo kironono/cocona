@@ -13,9 +13,12 @@ Rails.application.routes.draw do
     resources :users, except: :show
     resources :channels, except: :show
     resources :system_infos, only: [:index]
-    get 'logs/web', controller: :logs, action: :web
-    get 'logs/recorder', controller: :logs, action: :recorder
-    get 'logs/worker', controller: :logs, action: :worker
+    resources :logs, only: [:index] do
+      collection do
+        get :web
+      end
+    end
+    match 'log_streams/web', controller: :log_streams, action: :web, via: :get
   end
 
   resources :server_infos, only: [] do

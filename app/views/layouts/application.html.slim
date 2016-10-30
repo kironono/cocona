@@ -75,10 +75,10 @@ html lang=I18n.locale
                 span
                   | その他
               ul.children
-                /li class=('active' if is_active_link?(settings_system_infos_path))
-                /  a href=settings_system_infos_path
-                /    i.fa.fa-caret-right
-                /    | システム情報
+                li class=('active' if is_active_link?(settings_logs_path))
+                  a href=settings_logs_path
+                    i.fa.fa-file-o
+                    | ログ
                 li
                   a href="/resque" target="_blank"
                     i.fa.fa-caret-right
