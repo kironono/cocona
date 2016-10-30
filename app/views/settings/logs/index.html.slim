@@ -1,0 +1,27 @@
+- content_for(:page_icon)
+  = 'fa-file-o'
+
+- content_for(:page_title)
+  = t('.page_title')
+
+
+.row
+  .col-sm-3.col-lg-2.mb20
+
+    ul.nav.nav-pills.nav-stacked
+      li class=('active' if @target == :web)
+        a href=settings_logs_path(target: :web)
+          = t('.label.web')
+
+
+  .col-sm-9.col-lg-10
+    input#log_source_url type="hidden" value=settings_log_streams_web_path
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          = t(".label.#{@target}")
+      .panel-body.nopadding
+        textarea.log-area#logs
+
+javascript:
+  logsIndexFunc();

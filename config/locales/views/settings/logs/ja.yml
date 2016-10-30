@@ -1,0 +1,7 @@
+ja:
+  settings:
+    logs:
+      index:
+        page_title: 'ログ'
+        label:
+          web: 'ウェブ'
