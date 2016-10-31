@@ -18,7 +18,6 @@ Rails.application.routes.draw do
         get :web
       end
     end
-    match 'log_streams/web', controller: :log_streams, action: :web, via: :get
   end
 
   resources :server_infos, only: [] do
