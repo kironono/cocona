@@ -136,6 +136,11 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+    lograge (0.4.1)
+      actionpack (>= 4, < 5.1)
+      activesupport (>= 4, < 5.1)
+      railties (>= 4, < 5.1)
+    logstash-event (1.2.02)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -329,6 +334,8 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (~> 3.0.5)
+  lograge
+  logstash-event
   pg (~> 0.18)
   pry-rails
   puma (~> 3.0)

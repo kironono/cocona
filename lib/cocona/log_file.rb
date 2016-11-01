@@ -17,7 +17,7 @@ module Cocona
     def type_to_path(log_type)
       case log_type.intern
       when :web
-        filename = "#{Rails.root}/log/web.log"
+        filename = "#{Rails.root}/log/lograge_#{Rails.env}.log"
       end
       return filename
     end
