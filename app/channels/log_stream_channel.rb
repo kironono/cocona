@@ -1,3 +1,5 @@
+require 'cocona/log_file'
+
 class LogStreamChannel < ApplicationCable::Channel
 
   def subscribed
