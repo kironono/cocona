@@ -2,7 +2,7 @@
   = 'fa-search'
 
 - content_for(:page_title)
-  = '番組検索'
+  = t('.page_title')
 
 
 .row
@@ -17,7 +17,7 @@
 
         .panel-footer
           button.btn.btn-primary type="submit"
-            | 検索
+            = t('.btn.search')
 
   .col-sm-9.col-lg-10
     .panel.panel-default
@@ -63,7 +63,7 @@
                     a.reserve_link href=reserve_program_path(program)
                       i.fa.fa-film
                       span<
-                        | 予約
+                        = t('.btn.reserve')
 
         .paginate.pull-right
           = paginate @programs

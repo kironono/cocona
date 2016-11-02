@@ -1,11 +1,15 @@
 ja:
   programs:
     index:
+      page_title: '番組検索'
       label:
         channel_service: 'チャンネル名'
         category: 'カテゴリー'
         title: '番組名'
         detail: '番組内容'
+      btn:
+        search: '検索'
+        reserve: '予約'
       placeholder:
         title: '番組名'
         detail: '番組内容'
