@@ -81,6 +81,7 @@ end
 
 group :test do
   gem 'minitest-rails-capybara'
+  gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
 
