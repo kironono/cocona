@@ -3,7 +3,7 @@ require 'test_helper'
 
 describe User do
 
-  let(:user) { users(:normal_user) }
+  let(:user) { create(:user) }
 
   describe "attributes" do
     it "name is required" do

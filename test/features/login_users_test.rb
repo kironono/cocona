@@ -4,11 +4,11 @@ feature "Login Users" do
 
   let(:submit) { "Log in" }
   let(:login_title) { "Log in" }
-  let(:user) { users(:normal_user) }
+  let(:user) { create(:user) }
 
   before do
+    user
     visit new_user_session_path
-
     page.must_have_content login_title
   end
 
