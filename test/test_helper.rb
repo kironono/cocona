@@ -8,6 +8,17 @@ require 'minitest/rails/capybara'
 require 'minitest/pride'
 
 
+# Coverage
+require "simplecov"
+if ENV['CIRCLE_ARTIFACTS']
+  coverage_dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+else
+  coverage_dir = Rails.root.join("etc", "coverage")
+end
+SimpleCov.coverage_dir(coverage_dir)
+SimpleCov.start 'rails'
+
+
 DatabaseCleaner.strategy = :transaction
 
 
