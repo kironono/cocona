@@ -6,6 +6,8 @@ machine:
     - redis
 
 dependencies:
+  pre:
+    - sudo apt-get install -y xvfb libqt4-dev libqtwebkit-dev
   post:
     - >
       mkdir -p config;

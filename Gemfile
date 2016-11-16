@@ -83,6 +83,10 @@ group :test do
   gem 'minitest-rails-capybara'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'headless'
+
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
 
   gem 'simplecov'
 end
