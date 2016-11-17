@@ -53,7 +53,7 @@ end
 
 class Capybara::Rails::TestCase
 
-  self.use_transactional_fixtures = false
+  self.use_transactional_tests = false
 
   # Configure the driver using metadata
   before do
