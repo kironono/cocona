@@ -1,6 +1,6 @@
 require "test_helper"
 
-feature "User Session Test" do
+feature "User Session" do
 
   feature "Login" do
     let(:submit) { "Log in" }
