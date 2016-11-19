@@ -30,4 +30,23 @@ feature "Settings User" do
     end
   end
 
+  feature "Delete" do
+
+    background do
+      @delete_user = create(:user)
+    end
+
+    scenario "successful", js: true do
+      visit settings_users_path
+      page.must_have_selector '.pageheader h2', text: "ユーザー設定"
+
+      page.accept_confirm 'ユーザーを削除しますか' do
+        click_link nil, href: settings_user_path(@delete_user.id)
+      end
+
+      page.must_have_selector ".alert-success", text: "ユーザーを削除しました"
+    end
+
+  end
+
 end
