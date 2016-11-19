@@ -1,6 +1,6 @@
 # cocona
 
-[![CircleCI](https://circleci.com/gh/kironono/cocona/tree/master.svg?style=svg)](https://circleci.com/gh/kironono/cocona/tree/master)
+[![CircleCI](https://circleci.com/gh/kironono/cocona/tree/master.svg?style=shield)](https://circleci.com/gh/kironono/cocona/tree/master)
 
 Digital Video Recording solution for Linux.
 
