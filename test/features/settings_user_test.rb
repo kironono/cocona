@@ -40,8 +40,10 @@ feature "Settings User" do
       visit settings_users_path
       page.must_have_selector '.pageheader h2', text: "ユーザー設定"
 
-      page.accept_confirm 'ユーザーを削除しますか' do
-        click_link nil, href: settings_user_path(@delete_user.id)
+      page.must_have_content @delete_user.email
+
+      page.accept_confirm "ユーザーを削除しますか" do
+        click_link "削除", href: settings_user_path(@delete_user)
       end
 
       page.must_have_selector ".alert-success", text: "ユーザーを削除しました"
