@@ -10,7 +10,3 @@ dependencies:
     - >
       mkdir -p config;
       cp config/settings.yml.sample config/settings.yml;
-
-test:
-  override:
-    - bundle exec rails test

@@ -1,24 +1,24 @@
 ENV['RAILS_ENV'] ||= 'test'
 
 
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-require 'minitest/rails'
-require 'minitest/rails/capybara'
-require 'minitest/pride'
-
-
 # Coverage
 require "simplecov"
 if ENV['CIRCLE_ARTIFACTS']
   coverage_dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
 else
-  coverage_dir = Rails.root.join("etc", "coverage")
+  coverage_dir = File.join("etc", "coverage")
 end
 SimpleCov.coverage_dir(coverage_dir)
 SimpleCov.start 'rails' do
-  SimpleCov.command_name "MiniTest #{Time.now}"
+  add_filter '/.bundle/'
 end
+
+
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
+require 'minitest/rails'
+require 'minitest/rails/capybara'
+require 'minitest/pride'
 
 
 # Capybara screenshot
