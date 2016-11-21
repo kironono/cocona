@@ -16,7 +16,9 @@ else
   coverage_dir = Rails.root.join("etc", "coverage")
 end
 SimpleCov.coverage_dir(coverage_dir)
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  SimpleCov.command_name "MiniTest #{Time.now}"
+end
 
 
 # Capybara screenshot
