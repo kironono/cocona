@@ -3,6 +3,7 @@ ENV['RAILS_ENV'] ||= 'test'
 
 # Coverage
 require "simplecov"
+require "codeclimate-test-reporter"
 if ENV['CIRCLE_ARTIFACTS']
   coverage_dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
 else
@@ -11,6 +12,10 @@ end
 SimpleCov.coverage_dir(coverage_dir)
 SimpleCov.start 'rails' do
   add_filter '/.bundle/'
+
+  formatters = [SimpleCov::Formatter::HTMLFormatter]
+  formatters << CodeClimate::TestReporter::Formatter if ENV['CI']
+  formatter SimpleCov::Formatter::MultiFormatter.new(formatters)
 end
 
 
