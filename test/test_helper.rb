@@ -6,7 +6,7 @@ require "simplecov"
 if ENV['CIRCLE_ARTIFACTS']
   coverage_dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
 else
-  coverage_dir = File.join("etc", "coverage")
+  coverage_dir = File.join("ci", "coverage")
 end
 SimpleCov.coverage_dir(coverage_dir)
 SimpleCov.start 'rails' do

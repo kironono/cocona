@@ -22,5 +22,5 @@
 
 # Ignore datafiles
 /data/*
-/etc/coverage
-/etc/capybara
+/ci/coverage
+/ci/capybara
