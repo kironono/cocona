@@ -3,6 +3,13 @@ require 'test_helper'
 
 describe Channel do
 
+  describe "with valid information" do
+    it do
+      channel = Channel.new(attributes_for(:channel))
+      assert channel.save
+    end
+  end
+
   describe "attributes" do
     let(:channel) { build(:channel) }
 
