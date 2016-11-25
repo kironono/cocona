@@ -10,3 +10,8 @@ dependencies:
     - >
       mkdir -p config;
       cp config/settings.yml.sample config/settings.yml;
+
+test:
+  post:
+    - >
+      bundle exec etc/scripts/codeclimate-send-coverage.rb;
