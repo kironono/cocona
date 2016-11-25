@@ -14,4 +14,4 @@ dependencies:
 test:
   post:
     - >
-      bundle exec etc/scripts/codeclimate-send-coverage.rb;
+      bundle exec ci/scripts/codeclimate-send-coverage.rb;
