@@ -1,6 +1,8 @@
 # cocona
 
 [![CircleCI](https://circleci.com/gh/kironono/cocona/tree/master.svg?style=shield)](https://circleci.com/gh/kironono/cocona/tree/master)
+[![Code Climate](https://codeclimate.com/github/kironono/cocona/badges/gpa.svg)](https://codeclimate.com/github/kironono/cocona)
+[![Test Coverage](https://codeclimate.com/github/kironono/cocona/badges/coverage.svg)](https://codeclimate.com/github/kironono/cocona/coverage)
 
 Digital Video Recording solution for Linux.
 
