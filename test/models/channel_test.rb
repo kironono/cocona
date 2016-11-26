@@ -21,5 +21,13 @@ describe Channel do
       proc.must_raise ActiveRecord::RecordInvalid
     end
 
+    it "channel is required" do
+      proc = Proc.new do
+        channel.channel = ''
+        channel.validate!
+      end
+      proc.must_raise ActiveRecord::RecordInvalid
+    end
+
   end
 end
