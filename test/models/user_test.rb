@@ -22,6 +22,14 @@ describe User do
       proc.must_raise ActiveRecord::RecordInvalid
     end
 
+    it "email is required" do
+      proc = Proc.new do
+        user.email = ''
+        user.validate!
+      end
+      proc.must_raise ActiveRecord::RecordInvalid
+    end
+
     it "password confirmation" do
       proc = Proc.new do
         user.password = 'password1'
