@@ -3,8 +3,8 @@ require "test_helper"
 feature "Settings User" do
 
   background do
-    user = create(:user)
-    login_as(user, :scope => :user)
+    @user = create(:user)
+    login_as(@user, :scope => :user)
   end
 
   feature "Create" do
@@ -28,6 +28,29 @@ feature "Settings User" do
 
       page.must_have_selector ".alert-success", text: "ユーザーを登録しました"
     end
+  end
+
+  feature "Update" do
+
+    scenario "with valid information" do
+      visit settings_users_path
+      page.must_have_selector '.pageheader h2', text: "ユーザー設定"
+
+      page.must_have_content @user.email
+
+      click_link "編集"
+
+      page.must_have_selector "h4.panel-title", text: "ユーザー編集"
+
+      fill_in "user[name]", with: "#{@user.name}_edit"
+
+      click_button "更新"
+
+      page.must_have_selector ".alert-success", text: "ユーザーを更新しました"
+
+      page.must_have_content "#{@user.name}_edit"
+    end
+
   end
 
   feature "Delete" do

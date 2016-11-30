@@ -31,7 +31,7 @@ Capybara::Screenshot.webkit_options = {
 if ENV['CIRCLE_ARTIFACTS']
   Capybara.save_path = File.join(ENV['CIRCLE_ARTIFACTS'], "capybara")
 else
-  Capybara.save_path = Rails.root.join("etc", "capybara")
+  Capybara.save_path = File.join("ci", "capybara")
 end
 
 
