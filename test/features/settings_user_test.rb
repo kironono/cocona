@@ -51,6 +51,24 @@ feature "Settings User" do
       page.must_have_content "#{@user.name}_edit"
     end
 
+    scenario "with invalid information" do
+      visit settings_users_path
+      page.must_have_selector '.pageheader h2', text: "ユーザー設定"
+
+      page.must_have_content @user.email
+
+      click_link "編集"
+
+      page.must_have_selector "h4.panel-title", text: "ユーザー編集"
+
+      fill_in "user[name]", with: ""
+      fill_in "user[email]", with: ""
+
+      click_button "更新"
+
+      page.must_have_selector "h4.panel-title", text: "ユーザー編集"
+      page.must_have_selector ".alert-danger", text: "ユーザーの更新に失敗しました"
+    end
   end
 
   feature "Delete" do
