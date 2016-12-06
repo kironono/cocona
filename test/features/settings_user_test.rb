@@ -28,6 +28,25 @@ feature "Settings User" do
 
       page.must_have_selector ".alert-success", text: "ユーザーを登録しました"
     end
+
+    scenario "with invalid information" do
+      visit settings_users_path
+      page.must_have_selector '.pageheader h2', text: "ユーザー設定"
+
+      click_link "新規登録"
+
+      page.must_have_selector "h4.panel-title", text: "新規登録"
+
+      fill_in "user[name]", with: ""
+      fill_in "user[email]", with: ""
+      fill_in "user[password]", with: ""
+      fill_in "user[password_confirmation]", with: ""
+
+      click_button "登録"
+
+      page.must_have_selector "h4.panel-title", text: "新規登録"
+      page.must_have_selector ".alert-danger", text: "ユーザーの登録に失敗しました"
+    end
   end
 
   feature "Update" do
