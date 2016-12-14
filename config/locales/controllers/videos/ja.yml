@@ -1,0 +1,6 @@
+ja:
+  videos:
+    destroy:
+      flash:
+        success: 'ビデオを削除しました。'
+        error: 'ビデオの削除に失敗しました。'

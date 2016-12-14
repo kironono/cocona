@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_video, only: [:show]
+  before_action :set_video, only: [:show, :destroy]
 
   def index
     @search = Video.ransack(params[:q])
@@ -10,6 +10,15 @@ class VideosController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    if @video.destroy
+      flash[:success] = t('.flash.success')
+    else
+      flash[:error] = t('.flash.error')
+    end
+    redirect_to action: :index and return
   end
 
   private
