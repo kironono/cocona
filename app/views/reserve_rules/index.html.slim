@@ -29,6 +29,8 @@
                 th
                   = t('.label.condition')
                 th
+                  = sort_link(@search, :last_reserved_at)
+                th
                   = sort_link(@search, :created_at)
                 th
             tbody
@@ -52,6 +54,11 @@
                       - unless index == conditions.size - 1
                         span.label.label-default<>
                           | AND
+                  td
+                    - if reserve_rule.last_reserved_at.present?
+                      = reserve_rule.last_reserved_at.to_s(:datetime)
+                    - else
+                      | -
                   td
                     = reserve_rule.created_at.to_s(:datetime)
                   td.table-action

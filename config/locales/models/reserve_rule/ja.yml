@@ -8,3 +8,4 @@ ja:
         status: '状態'
         condition: '予約ルール'
         created_at: '作成日時'
+        last_reserved_at: '最後の予約日時'
