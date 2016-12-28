@@ -8,6 +8,8 @@ ja:
         edit: '編集'
         delete: '削除'
         reservation_update: '予約を今すぐ更新'
+        active: '有効なルール'
+        inactive: '無効なルール'
       alert:
         delete_confirm: '予約ルールを削除しますか'
       rule_condition:

@@ -12,6 +12,18 @@
     a.btn.btn-info.btn-block href=reservation_update_reserve_rules_path data={method: :post}
       = t('.label.reservation_update')
 
+    ul.nav.nav-pills.nav-stacked
+      li class=('active' if @status == :active)
+        a href=reserve_rules_path(status: :active)
+          span.badge.pull-right
+            = @search.result.where(status: :active).count
+          = t('.label.active')
+      li class=('active' if @status == :inactive)
+        a href=reserve_rules_path(status: :inactive)
+          span.badge.pull-right
+            = @search.result.where(status: :inactive).count
+          = t('.label.inactive')
+
   .col-sm-9.col-lg-10
     .panel.panel-default
       .panel-body

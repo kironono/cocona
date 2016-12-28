@@ -4,9 +4,17 @@ class ReserveRulesController < ApplicationController
   before_action :set_reserve_rule, only: [:edit, :update, :destroy, :switch_status]
 
   def index
+    if params[:status].present?
+      @status = params[:status].intern
+    end
     @search = ReserveRule.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty?
-    @reserve_rules = @search.result.page(params[:page]).per(params[:per])
+    if @status.present?
+      result = @search.result.where(status: @status)
+    else
+      result = @search.result
+    end
+    @reserve_rules = result.page(params[:page]).per(params[:per])
   end
 
   def new
