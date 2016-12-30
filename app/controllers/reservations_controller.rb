@@ -1,14 +1,9 @@
 class ReservationsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :set_status_param, only: %w(index)
 
   def index
-    if params[:status].present?
-      @status = params[:status].intern
-    else
-      @status = :reserved
-    end
-
     @search = Reservation.ransack(params[:q])
     if @search.sorts.empty?
       case @status
@@ -26,6 +21,11 @@ class ReservationsController < ApplicationController
     @reservation.destroy!
     flash[:success] = t('.flash.success')
     redirect_to action: :index and return
+  end
+
+  private
+  def set_status_param
+    @status = params[:status].present? ? params[:status].intern : :reserved
   end
 
 end
