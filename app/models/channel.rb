@@ -1,5 +1,7 @@
 class Channel < ApplicationRecord
 
+  has_many :channel_services
+
   validates :name, presence: true, uniqueness: true
   validates :channel, presence: true, uniqueness: true
 

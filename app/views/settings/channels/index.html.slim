@@ -26,6 +26,8 @@
                 th
                   = sort_link(@search, :channel)
                 th
+                  = t('.label.channel_services')
+                th
             tbody
               - @channels.each do |channel|
                 tr
@@ -35,6 +37,11 @@
                     = channel.name
                   td
                     = channel.channel
+                  td
+                    ul
+                      - channel.channel_services.each do |service|
+                        li
+                          = service.name
                   td.table-action
                     a href=edit_settings_channel_path(channel)
                       i.fa.fa-edit
